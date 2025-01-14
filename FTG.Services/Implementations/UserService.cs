@@ -8,16 +8,16 @@ using System.Text;
 namespace FTG.Services.Implementations;
 public class UserService(GameDbContext _context) : IUserService
 {
-    public async Task<User> Login(string username, string password)
+    public async Task<bool> Login(string username, string password)
     {
         var user = await _context.Users.FirstOrDefaultAsync(u => u.Username == username);
 
         if (user != null && user.PasswordHash == HashPass(password))
         {
-            return user;
+            return true;
         }
 
-        return null;
+        return false;
     }
 
     public async Task Register(string username, string password)

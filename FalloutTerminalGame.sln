@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FalloutTerminalGame", "Fall
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FTG.Data", "FTG.Data\FTG.Data.csproj", "{F25B7704-F0E3-4A23-8239-0A056A4A0321}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FTG.Services", "FTG.Services\FTG.Services.csproj", "{7FC03DD0-5364-4790-8B3F-3386D68AF894}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{F25B7704-F0E3-4A23-8239-0A056A4A0321}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F25B7704-F0E3-4A23-8239-0A056A4A0321}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F25B7704-F0E3-4A23-8239-0A056A4A0321}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7FC03DD0-5364-4790-8B3F-3386D68AF894}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7FC03DD0-5364-4790-8B3F-3386D68AF894}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7FC03DD0-5364-4790-8B3F-3386D68AF894}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7FC03DD0-5364-4790-8B3F-3386D68AF894}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

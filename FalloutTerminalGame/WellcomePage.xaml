@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="FalloutTerminalGame.WellcomePage">
+    <VerticalStackLayout>
+        <HorizontalStackLayout
+            HorizontalOptions="EndAndExpand">
+           
+            <Button
+                x:Name="btnRegister"
+                Text="Register"
+                VerticalOptions="End"
+                HorizontalOptions="End"
+                Margin="5"
+                Clicked="btnRegister_Clicked"/>
+            <Button
+                x:Name="btnLogin"
+                Text="Login"
+                VerticalOptions="End"
+                HorizontalOptions="End"
+                Margin="5"
+                Clicked="btnLogin_Clicked"/>
+        </HorizontalStackLayout>
+        <Label 
+            Text="Welcome to The Fallout Terminal Game"
+            VerticalOptions="Center" 
+            HorizontalOptions="Center"
+            FontSize="Large"
+            Margin="0, 50, 0, 0"/>
+        <Button
+            x:Name="btnPlay"
+            Text="Play"
+            VerticalOptions="End"
+            HorizontalOptions="End"
+            Margin="5"
+            Clicked="btnPlay_Clicked"/>
+        <Button
+            x:Name="btnScoreboard"
+            Text="Scoreboard"
+            VerticalOptions="End"
+            HorizontalOptions="End"
+            Margin="5"
+            Clicked="btnScoreboard_Clicked"/>
+    </VerticalStackLayout>
+</ContentPage>

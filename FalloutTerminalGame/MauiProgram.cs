@@ -1,7 +1,8 @@
-﻿using FTG.Data;
-using Microsoft.EntityFrameworkCore;
+﻿using FalloutTerminalGame.Resources.Utils;
+using FTG.Data;
+using FTG.Services.Implementations;
+using FTG.Services.Interfaces;
 using Microsoft.Extensions.Logging;
-using System.Text;
 
 namespace FalloutTerminalGame
 {
@@ -17,12 +18,25 @@ namespace FalloutTerminalGame
                     fonts.AddFont("OpenSans-Regular.ttf", "OpenSansRegular");
                     fonts.AddFont("OpenSans-Semibold.ttf", "OpenSansSemibold");
                 });
-            builder.Services.AddDbContext<GameDbContext>(options => options.UseSqlServer(new StringBuilder(Environment.GetEnvironmentVariable("CONN_STR")).Append(";Initial Catalog=FalloutTerminalGameDB").ToString()));
+            builder.Services.AddTransient<App>();
+            builder.Services.AddTransient<AppShell>();
+            builder.Services.AddTransient<WellcomePage>();
+            builder.Services.AddTransient<LoginPage>();
+            builder.Services.AddTransient<MainPage>();
+
+            builder.Services.AddScoped<IUserService, UserService>();
+            builder.Services.AddScoped<IWordService, WordService>();
+
+            builder.Services.AddDbContext<GameDbContext>();
 #if DEBUG
             builder.Logging.AddDebug();
 #endif
 
-            return builder.Build();
+            var app = builder.Build();
+
+            ServiceHelper.Initialize(app.Services);
+
+            return app;
         }
     }
 }
