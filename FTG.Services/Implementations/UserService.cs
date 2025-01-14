@@ -8,6 +8,19 @@ using System.Text;
 namespace FTG.Services.Implementations;
 public class UserService(GameDbContext _context) : IUserService
 {
+    public async Task<int?> GetBestScoreByUsername(string username)
+    {
+        var user = await _context.Users.FirstOrDefaultAsync(u => u.Username == username);
+        if (user == null)
+            return null;
+        return user.BestScore;
+    }
+
+    public async Task<List<User>> GetTop10()
+    {
+        return await _context.Users.OrderBy(x => x.BestScore).Take(10).ToListAsync();
+    }
+
     public async Task<bool> Login(string username, string password)
     {
         var user = await _context.Users.FirstOrDefaultAsync(u => u.Username == username);

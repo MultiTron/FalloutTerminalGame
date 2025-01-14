@@ -24,9 +24,9 @@ public partial class WellcomePage : ContentPage
 
     }
 
-    private void btnScoreboard_Clicked(object sender, EventArgs e)
+    private async void btnScoreboard_Clicked(object sender, EventArgs e)
     {
-
+        await Navigation.PushAsync(new ScorePage());
     }
 
     private async void btnLogin_Clicked(object sender, EventArgs e)
