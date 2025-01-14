@@ -1,9 +1,11 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
-VisualStudioVersion = 17.12.35527.113 d17.12
+VisualStudioVersion = 17.12.35527.113
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FalloutTerminalGame", "FalloutTerminalGame\FalloutTerminalGame.csproj", "{15EE945B-2A73-49B1-B56C-BA2F23F69912}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FTG.Data", "FTG.Data\FTG.Data.csproj", "{F25B7704-F0E3-4A23-8239-0A056A4A0321}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +17,10 @@ Global
 		{15EE945B-2A73-49B1-B56C-BA2F23F69912}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{15EE945B-2A73-49B1-B56C-BA2F23F69912}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{15EE945B-2A73-49B1-B56C-BA2F23F69912}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F25B7704-F0E3-4A23-8239-0A056A4A0321}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F25B7704-F0E3-4A23-8239-0A056A4A0321}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F25B7704-F0E3-4A23-8239-0A056A4A0321}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F25B7704-F0E3-4A23-8239-0A056A4A0321}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

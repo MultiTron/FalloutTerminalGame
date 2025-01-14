@@ -1,4 +1,7 @@
-﻿using Microsoft.Extensions.Logging;
+﻿using FTG.Data;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Logging;
+using System.Text;
 
 namespace FalloutTerminalGame
 {
@@ -14,7 +17,7 @@ namespace FalloutTerminalGame
                     fonts.AddFont("OpenSans-Regular.ttf", "OpenSansRegular");
                     fonts.AddFont("OpenSans-Semibold.ttf", "OpenSansSemibold");
                 });
-            builder.Services.AddDbContext<GameDbContext>(options => options.UseSqlServer(Environment.GetEnvironmentVariable("CONN_STR")));
+            builder.Services.AddDbContext<GameDbContext>(options => options.UseSqlServer(new StringBuilder(Environment.GetEnvironmentVariable("CONN_STR")).Append(";Initial Catalog=FalloutTerminalGameDB").ToString()));
 #if DEBUG
             builder.Logging.AddDebug();
 #endif
