@@ -1,3 +1,5 @@
+using Microsoft.IdentityModel.Tokens;
+
 namespace FalloutTerminalGame;
 
 public partial class WellcomePage : ContentPage
@@ -5,6 +7,16 @@ public partial class WellcomePage : ContentPage
     public WellcomePage()
     {
         InitializeComponent();
+    }
+
+    protected override async void OnNavigatedTo(NavigatedToEventArgs args)
+    {
+        var username = await SecureStorage.GetAsync("username");
+        if (!username.IsNullOrEmpty())
+        {
+            lblWelcome.Text = $"Welcome {username}\nto the Fallout Terminal Game";
+        }
+        base.OnNavigatedTo(args);
     }
 
     private void btnPlay_Clicked(object sender, EventArgs e)
@@ -20,10 +32,5 @@ public partial class WellcomePage : ContentPage
     private async void btnLogin_Clicked(object sender, EventArgs e)
     {
         await Navigation.PushAsync(new LoginPage());
-    }
-
-    private void btnRegister_Clicked(object sender, EventArgs e)
-    {
-
     }
 }

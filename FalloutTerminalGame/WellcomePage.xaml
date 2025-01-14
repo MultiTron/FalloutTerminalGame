@@ -6,39 +6,39 @@
         <HorizontalStackLayout
             HorizontalOptions="EndAndExpand">
            
-            <Button
-                x:Name="btnRegister"
-                Text="Register"
-                VerticalOptions="End"
-                HorizontalOptions="End"
-                Margin="5"
-                Clicked="btnRegister_Clicked"/>
-            <Button
+            <ImageButton
                 x:Name="btnLogin"
-                Text="Login"
+                Source="profile.png"
+                CornerRadius="200"
+                Aspect="AspectFit"
+                MaximumHeightRequest="30"
                 VerticalOptions="End"
                 HorizontalOptions="End"
                 Margin="5"
                 Clicked="btnLogin_Clicked"/>
         </HorizontalStackLayout>
         <Label 
+            x:Name="lblWelcome"
             Text="Welcome to The Fallout Terminal Game"
+            HorizontalTextAlignment="Center"
             VerticalOptions="Center" 
             HorizontalOptions="Center"
             FontSize="Large"
-            Margin="0, 50, 0, 0"/>
+            Margin="0, 50, 0, 50"/>
         <Button
             x:Name="btnPlay"
             Text="Play"
-            VerticalOptions="End"
-            HorizontalOptions="End"
+            WidthRequest="300"
+            VerticalOptions="Center"
+            HorizontalOptions="CenterAndExpand"
             Margin="5"
             Clicked="btnPlay_Clicked"/>
         <Button
             x:Name="btnScoreboard"
             Text="Scoreboard"
-            VerticalOptions="End"
-            HorizontalOptions="End"
+            WidthRequest="300"
+            VerticalOptions="Center"
+            HorizontalOptions="CenterAndExpand"
             Margin="5"
             Clicked="btnScoreboard_Clicked"/>
     </VerticalStackLayout>

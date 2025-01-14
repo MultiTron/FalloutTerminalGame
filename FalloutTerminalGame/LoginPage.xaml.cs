@@ -16,7 +16,23 @@ public partial class LoginPage(IUserService userService) : ContentPage
         {
             lblError.Text = "Incorrect credentials!";
         }
+        else
+        {
+            await SecureStorage.SetAsync("username", txtUsername.Text);
+            await Navigation.PopAsync();
+        }
+    }
 
-        await Navigation.PopAsync();
+    private async void btnRegister_Clicked(object sender, EventArgs e)
+    {
+        if (txtUsername.Text.IsNullOrEmpty() || txtPassword.Text.IsNullOrEmpty() || !await userService.Register(txtUsername.Text, txtPassword.Text))
+        {
+            lblError.Text = "Incorrect credentials!";
+        }
+        else
+        {
+            await SecureStorage.SetAsync("username", txtUsername.Text);
+            await Navigation.PopAsync();
+        }
     }
 }

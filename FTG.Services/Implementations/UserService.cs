@@ -20,11 +20,11 @@ public class UserService(GameDbContext _context) : IUserService
         return false;
     }
 
-    public async Task Register(string username, string password)
+    public async Task<bool> Register(string username, string password)
     {
         if (await _context.Users.AnyAsync(u => u.Username.Equals(username)))
         {
-            return;
+            return false;
         }
 
         var user = new User
@@ -38,6 +38,7 @@ public class UserService(GameDbContext _context) : IUserService
 
         await _context.Users.AddAsync(user);
         await _context.SaveChangesAsync();
+        return true;
     }
 
     private string HashPass(string pass)
