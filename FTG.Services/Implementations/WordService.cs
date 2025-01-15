@@ -40,8 +40,20 @@ public class WordService(GameDbContext _context) : IWordService
 
     public async Task<List<Word>> GetRandomWords(int count)
     {
-        return await _context.Words.OrderBy(x => Random.Shared.Next())
-            .Take(count <= await _context.Words.CountAsync() ? count : await _context.Words.CountAsync())
-            .ToListAsync();
+        var wordLength = Random.Shared.Next(4, 11);
+        var list = new List<Word>();
+        foreach (var word in _context.Words)
+        {
+            if (word.Value.Length == wordLength)
+                list.Add(word);
+        }
+        for (int i = list.Count - 1; i > 0; i--)
+        {
+            int j = Random.Shared.Next(0, i + 1);
+            Word temp = list[i];
+            list[i] = list[j];
+            list[j] = temp;
+        }
+        return list.Take(count <= list.Count ? count : list.Count).ToList();
     }
 }

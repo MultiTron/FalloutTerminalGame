@@ -4,8 +4,25 @@
              x:Class="FalloutTerminalGame.MainPage">
 
     <VerticalStackLayout
-        Padding="30,0"
-        Spacing="25">
+        Padding="30"
+        Spacing="25"
+        HorizontalOptions="FillAndExpand">
+
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto" />
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="Auto" />
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+            <Label Text="Score" Style="{StaticResource SubHeadline}" VerticalOptions="Center" HorizontalOptions="Start" Grid.Column="0" />
+            <Label x:Name="lblScore" Style="{StaticResource SubHeadline}" VerticalOptions="Center" HorizontalOptions="End" Grid.Column="2" />
+            <Label Text="Lives" Style="{StaticResource SubHeadline}" VerticalOptions="Center" HorizontalOptions="Start" Grid.Column="0" Grid.Row="1"/>
+            <Label x:Name="lblLives" Style="{StaticResource SubHeadline}" VerticalOptions="Center" HorizontalOptions="End" Grid.Column="2" Grid.Row="1"/>
+        </Grid>
         
         <Label
             Text="RobCo™ Terminal"
@@ -17,6 +34,8 @@
 
         <Label
             x:Name="lblPassPanel"
+            HorizontalOptions="CenterAndExpand"
+            HorizontalTextAlignment="Start"
             MaxLines="17"/>
 
         <HorizontalStackLayout
@@ -30,12 +49,18 @@
             <Entry
                 x:Name="txtInput"
                 HorizontalOptions="FillAndExpand"
+                WidthRequest="200"
                 Margin="10, 0, 0, 0"
                 />
             <Button
                 x:Name="btnEnter"
-                Text="↵"/>
+                Text="↵"
+                Clicked="btnEnter_Clicked"/>
         </HorizontalStackLayout>
+        <Label
+            x:Name="lblLikeness"
+            Margin="10"
+            HorizontalOptions="CenterAndExpand"/>
     </VerticalStackLayout>
 
 </ContentPage>

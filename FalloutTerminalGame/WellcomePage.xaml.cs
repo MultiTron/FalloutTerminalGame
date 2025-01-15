@@ -15,13 +15,20 @@ public partial class WellcomePage : ContentPage
         if (!username.IsNullOrEmpty())
         {
             lblWelcome.Text = $"Welcome {username}\nto the Fallout Terminal Game";
+            btnPlay.IsVisible = true;
+            btnScoreboard.IsVisible = true;
+        }
+        else
+        {
+            btnPlay.IsVisible = false;
+            btnScoreboard.IsVisible = false;
         }
         base.OnNavigatedTo(args);
     }
 
-    private void btnPlay_Clicked(object sender, EventArgs e)
+    private async void btnPlay_Clicked(object sender, EventArgs e)
     {
-
+        await Navigation.PushAsync(new MainPage());
     }
 
     private async void btnScoreboard_Clicked(object sender, EventArgs e)

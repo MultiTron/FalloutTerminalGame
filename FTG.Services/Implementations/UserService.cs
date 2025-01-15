@@ -16,9 +16,14 @@ public class UserService(GameDbContext _context) : IUserService
         return user.BestScore;
     }
 
+    public async Task<User?> GetByUsername(string username)
+    {
+        return await _context.Users.FirstOrDefaultAsync(u => u.Username == username);
+    }
+
     public async Task<List<User>> GetTop10()
     {
-        return await _context.Users.OrderBy(x => x.BestScore).Take(10).ToListAsync();
+        return await _context.Users.OrderByDescending(x => x.BestScore).Take(10).ToListAsync();
     }
 
     public async Task<bool> Login(string username, string password)
@@ -52,6 +57,17 @@ public class UserService(GameDbContext _context) : IUserService
         await _context.Users.AddAsync(user);
         await _context.SaveChangesAsync();
         return true;
+    }
+
+    public async Task UpdateBestScore(string username, int score)
+    {
+        var user = await _context.Users.FirstOrDefaultAsync(u => u.Username == username);
+        if (user == null)
+            return;
+        if (user.BestScore >= score)
+            return;
+        user.BestScore = score;
+        await _context.SaveChangesAsync();
     }
 
     private string HashPass(string pass)
