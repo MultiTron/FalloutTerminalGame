@@ -12,7 +12,7 @@ public partial class ScorePage(IUserService userService) : ContentPage
     }
     protected override async void OnAppearing()
     {
-        var score = await userService.GetBestScoreByUsername(await SecureStorage.GetAsync("username") ?? "");
+        var score = await userService.GetBestScoreByUsername(await SecureStorage.GetAsync(Constants.Username) ?? "");
         if (score != null)
         {
             lblBestScore.Text = $"Your best score is: {score}";
@@ -26,5 +26,11 @@ public partial class ScorePage(IUserService userService) : ContentPage
         }
         lblScoreboard.Text = str.ToString();
         base.OnAppearing();
+    }
+
+    protected override bool OnBackButtonPressed()
+    {
+        AudioHelper.PlayAudio(Constants.SelectionSound);
+        return base.OnBackButtonPressed();
     }
 }

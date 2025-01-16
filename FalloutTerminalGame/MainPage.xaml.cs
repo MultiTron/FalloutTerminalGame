@@ -14,41 +14,47 @@ namespace FalloutTerminalGame
             InitializeComponent();
         }
 
-        protected override void OnAppearing()
+        protected override async void OnAppearing()
         {
             lives = 3;
             currentScore = 0;
             txtInput.Text = "";
             lblLikeness.Text = "";
             NewGame();
+            await AudioHelper.PlayAudioAsync(Constants.NewGameSound);
             base.OnAppearing();
         }
 
         protected override async void OnDisappearing()
         {
-            await userService.UpdateBestScore(await SecureStorage.GetAsync("username"), currentScore);
+            await userService.UpdateBestScore(await SecureStorage.GetAsync(Constants.Username), currentScore);
             base.OnDisappearing();
         }
 
         private async void btnEnter_Clicked(object sender, EventArgs e)
         {
+
+            await AudioHelper.PlayAudioAsync(Constants.SelectionSound);
             int likeness = WordLinkeness.Calculate(txtInput.Text, correctWord!);
             lblLikeness.Text = $"Likeness: {likeness}";
             if (likeness == correctWord.Length)
             {
                 currentScore += 5000;
                 lives += 3;
+                await AudioHelper.PlayAudioAsync(Constants.PointsUpSound);
                 RefreshDisplay();
                 NewGame();
+                return;
             }
             currentScore += likeness * 100;
             lives--;
+            RefreshDisplay();
+            await AudioHelper.PlayAudioAsync(Constants.WrongSound);
             if (lives == 0)
             {
-                await userService.UpdateBestScore(await SecureStorage.GetAsync("username"), currentScore);
+                await userService.UpdateBestScore(await SecureStorage.GetAsync(Constants.Username), currentScore);
                 await Navigation.PushAsync(new WellcomePage());
             }
-            RefreshDisplay();
         }
 
         private async void NewGame()

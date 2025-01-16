@@ -12,6 +12,7 @@ public partial class LoginPage(IUserService userService) : ContentPage
     }
     private async void btnSubmit_Clicked(object sender, EventArgs e)
     {
+        await AudioHelper.PlayAudioAsync(Constants.SelectionSound);
         if (txtUsername.Text.IsNullOrEmpty() || txtPassword.Text.IsNullOrEmpty() || !await userService.Login(txtUsername.Text, txtPassword.Text))
         {
             lblError.Text = "Incorrect credentials!";
@@ -25,6 +26,7 @@ public partial class LoginPage(IUserService userService) : ContentPage
 
     private async void btnRegister_Clicked(object sender, EventArgs e)
     {
+        await AudioHelper.PlayAudioAsync(Constants.SelectionSound);
         if (txtUsername.Text.IsNullOrEmpty() || txtPassword.Text.IsNullOrEmpty() || !await userService.Register(txtUsername.Text, txtPassword.Text))
         {
             lblError.Text = "Incorrect credentials!";
