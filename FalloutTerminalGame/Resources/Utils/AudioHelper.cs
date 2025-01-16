@@ -9,10 +9,4 @@ public static class AudioHelper
 
         await audioPlayer.PlayAsync(CancellationToken.None);
     }
-    public static void PlayAudio(string filename)
-    {
-        var audioPlayer = AudioManager.Current.CreatePlayer(filename);
-
-        audioPlayer.Play();
-    }
 }

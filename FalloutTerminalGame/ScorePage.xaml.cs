@@ -28,9 +28,4 @@ public partial class ScorePage(IUserService userService) : ContentPage
         base.OnAppearing();
     }
 
-    protected override bool OnBackButtonPressed()
-    {
-        AudioHelper.PlayAudio(Constants.SelectionSound);
-        return base.OnBackButtonPressed();
-    }
 }
